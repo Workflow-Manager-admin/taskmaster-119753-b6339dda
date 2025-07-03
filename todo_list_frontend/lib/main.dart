@@ -57,8 +57,8 @@ class TodoListApp extends StatelessWidget {
             color: Colors.white70, fontWeight: FontWeight.w300, fontSize: 16),
       ),
       checkboxTheme: CheckboxThemeData(
-        fillColor: MaterialStatePropertyAll(primaryColor),
-        checkColor: MaterialStatePropertyAll(scaffoldBg),
+        fillColor: WidgetStatePropertyAll(primaryColor),
+        checkColor: WidgetStatePropertyAll(scaffoldBg),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
       ),
       cardColor: secondaryColor,
@@ -78,7 +78,7 @@ class TodoListApp extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
         ),
         hintStyle: TextStyle(
-          color: primaryColor.withOpacity(0.7),
+          color: primaryColor.withAlpha((0.7 * 255).toInt()),
         ),
       ),
       snackBarTheme: const SnackBarThemeData(
@@ -95,7 +95,7 @@ class TodoListApp extends StatelessWidget {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'To-Do List',
+      title: 'Todo List',
       theme: darkMinimalTheme,
       home: const TodoListScreen(),
     );
@@ -157,8 +157,8 @@ class _TodoListScreenState extends State<TodoListScreen> {
 
   void _toggleTask(int index) {
     setState(() {
-      _tasks[index] = _tasks[index]
-          .copyWith(completed: !_tasks[index].completed);
+      _tasks[index] =
+          _tasks[index].copyWith(completed: !_tasks[index].completed);
     });
   }
 
@@ -224,7 +224,7 @@ class _TodoListScreenState extends State<TodoListScreen> {
     // For a minimalistic app bar and body padding.
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Todos'),
+        title: const Text('Todo List'),
       ),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
